@@ -1,51 +1,86 @@
 <template>
-  <v-container>
-    <v-form v-model="valid">
-      <v-row>
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="totalValue"
-            :counter="50"
-            label="Valor Total"
-            type="number"
-            prefix="R$"
-            required
-          ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="Period"
-            :counter="3"
-            type="number"
-            label="Periodo"
-            required
-          ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="taxa"
-            label="Taxa Juros"
-            type="number"
-            prefix="%"
-            required
-          ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" md="4">
-          <v-select :items="itemsJuros" label="Tipo" dense></v-select>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" md="4">
-          <v-btn class="mr-4" @click="CalculateSac"> Calcular </v-btn>
-        </v-col>
-      </v-row>
-    </v-form>
+  <v-container style="height:200vh">
+    <div class="topo-page">
+      <v-form v-model="valid" style="width:50%">
+        <v-row>
+          <v-col cols="12" md="8">
+            <v-text-field
+              v-model="totalValue"
+              :counter="50"
+              label="Valor Total"
+              type="number"
+              prefix="R$"
+              required
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" md="8">
+            <v-text-field
+              v-model="Period"
+              :counter="3"
+              type="number"
+              label="Periodo"
+              required
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" md="8">
+            <v-text-field
+              v-model="taxa"
+              label="Taxa Juros"
+              type="number"
+              prefix="%"
+              required
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" md="8">
+            <v-select :items="itemsJuros" label="Tipo" dense></v-select>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" md="8">
+            <v-btn class="mr-4" @click="CalculateSac"> Calcular </v-btn>
+          </v-col>
+        </v-row>
+      </v-form>
+      <v-card v-if="ResultSac.length > 0"
+    class="mx-auto"
+    max-width="344"
+    outlined
+  >
+    <v-list-item three-line>
+      <v-list-item-content>
+        <div class="text-overline mb-4">
+          OVERLINE
+        </div>
+        <v-list-item-title class="text-h5 mb-1">
+          Headline 5
+        </v-list-item-title>
+        <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+      </v-list-item-content>
+
+      <v-list-item-avatar
+        tile
+        size="80"
+        color="grey"
+      ></v-list-item-avatar>
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        text
+      >
+        Button
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+    </div>
     <div v-if="ResultSac.length > 0" class="column-data">
       <v-card>
         <v-card-title>
@@ -117,5 +152,11 @@ export default {
 <style scoped>
 .column-data {
   margin-top: 30px;
+}
+
+.topo-page{
+  display: flex;
+  width: 100%;
+
 }
 </style>
