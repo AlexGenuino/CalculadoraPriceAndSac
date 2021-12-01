@@ -53,7 +53,7 @@
           </v-col>
         </v-row>
       </v-form>
-      <v-card v-if="Result.length > 0" class="mx-auto" max-width="344" outlined>
+      <v-card v-if="Result.length > 0" class="mx-auto ajust-tamanho" max-width="344" outlined>
         <v-list-item three-line>
           <v-list-item-content>
             <div class="text-overline mb-4">CALCULADORA SAC/PRICE</div>
@@ -177,10 +177,10 @@ export default {
       const sac = new Financiamento(this.totalValue, this.taxa, this.Period);
       sac.formatarDados();
       var SacResult = sac.financiarSac();
-     
+
       this.Result = SacResult.prestacoes;
       console.log(SacResult);
-       this.jurosTaxa = this.taxa;
+      this.jurosTaxa = this.taxa;
       this.numberoParcelas = this.Period;
       this.tipoFinancimento = this.Selected;
       this.valorPrestacao = "VÁRIÁVEL";
@@ -229,6 +229,20 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 860px) {
+  .topo-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px;
+    margin-top: 50px;
+  }
+
+  .ajust-tamanho{
+    margin-top: 50px;
+  }
+}
+
 .column-data {
   margin-top: 30px;
 }
